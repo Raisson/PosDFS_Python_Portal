@@ -8,7 +8,7 @@ python.exe -m venv venv
 .\venv\Scripts\Activate.ps1
 
 ## Passo 3: Instalar as dependencias
-pip install r requeriments.txt
+pip install -r requeriments.txt
 
 ## Passo 4: Iniciar o servidor web
 python manage.py runserver     

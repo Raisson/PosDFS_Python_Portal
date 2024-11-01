@@ -1,7 +1,10 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import UserProfile
+from .models import Projetos, Atividades
+
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=30, required=True)
@@ -19,3 +22,22 @@ class CustomUserCreationForm(UserCreationForm):
         profile = UserProfile(user=user, phone_number=self.cleaned_data['phone_number'])
         profile.save()
         return user
+    
+class ProjetoForm(ModelForm):
+    class Meta:
+        model = Projetos
+        fields = ['nome','descricao']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+class AtividadeForm(ModelForm):
+    class Meta:
+        model = Atividades
+        fields = ['nome','projeto','descricao']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control'}),
+            'projeto': forms.Select(attrs={'class': 'form-control'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control'}),
+        }

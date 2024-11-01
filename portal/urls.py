@@ -17,17 +17,33 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app.views import home, projetos, atividades, login_view, user_logout, register_view
+from app.views import home, login_view, user_logout, register_view
+from app.views import projetos, projetos_form, projetos_criar, projetos_editar, projetos_atualizar, projetos_deletar
+from app.views import atividades, atividades_form, atividades_criar, atividades_editar, atividades_atualizar, atividades_deletar
 
 urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', user_logout, name='logout'),
     path('register/', register_view, name='register'),
-
-
     path('',home, name='home'),
     path('admin/', admin.site.urls),
-    path('projetos/', projetos, name='lista_projetos'),
-    path('atividades/', atividades, name='lista_atividades'),
+
+    path('projetos/', projetos, name='projetos'),
+    path('projetosform/',projetos_form, name='projetosform'),
+    path('projetoscriar/', projetos_criar, name='projetoscriar'),
+    path('projetoseditar/<int:pk>/', projetos_editar, name='projetoseditar'),
+    path('projetosatualizar/<int:pk>/', projetos_atualizar, name='projetosatualizar'),
+    path('projetosdeletar/<int:pk>/', projetos_deletar, name='projetosdeletar'),
+
+
+
+
+    path('atividades/', atividades, name='atividades'),
+
+    path('atividadesform/',atividades_form, name='atividadesform'),
+    path('atividadescriar/', atividades_criar, name='atividadescriar'),
+    path('atividadeseditar/<int:pk>/', atividades_editar, name='atividadeseditar'),
+    path('atividadesatualizar/<int:pk>/', atividades_atualizar, name='atividadesatualizar'),
+    path('atividadesdeletar/<int:pk>/', atividades_deletar, name='atividadesdeletar'),
 
 ]
