@@ -33,9 +33,10 @@ class ProjetoForm(ModelForm):
         }
 
 class AtividadeForm(ModelForm):
+    status_atividade = forms.ChoiceField(choices=Atividades.STATUS, label='Status', widget=forms.Select(attrs={'class': 'form-control'})) # Para campo select
     class Meta:
         model = Atividades
-        fields = ['nome','projeto','user','descricao']
+        fields = ['nome','projeto','user','status_atividade','descricao']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'projeto': forms.Select(attrs={'class': 'form-control'}),
