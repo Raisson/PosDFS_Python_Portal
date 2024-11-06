@@ -1,19 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Login</h1>
-  {% if message %}
-    <p>{{ message }}</p>
-  {% endif %}
-  <form method="post">
-    {% csrf_token %}
-    <div>
-      <label for="username">Usuário:</label>
-      <input type="text" name="username" id="username" required>
+  <div class="container ">
+    <div class="row ">
+      <!-- text-end -->
+      <div class="col-md-12 ">
+                  <div class="col-md-4 offset-md-4 mt-4">
+                    <h1>Login</h1>
+                    {% if message %}
+                      <p>{{ message }}</p>
+                    {% endif %}
+                  </div>
+                  <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="col-md-4 offset-md-4 mt-4">
+                      <label for="username">Usuário:</label>
+                      <input type="text" class="form-control" name="username" id="username" required>
+                    </div>
+                    <div class="col-md-4  mt-4"></div>
+                    <div class="col-md-4 offset-md-4 mt-4">
+                      <label for="password" >Senha:</label>
+                      <input type="password" class="form-control" name="password" id="password" required>
+                    </div>
+                    <div class="col-md-4 offset-md-4 mt-4 d-flex justify-content-center">
+                      <a href="{% url 'register' %}" class="btn btn-success  mx-4">Cadastrar</a>
+                      <button class='btn btn-success mx-4'type="submit">Logar</button>
+                    </div>
+                  </form>
+
+      </div>
     </div>
-    <div>
-      <label for="password">Senha:</label>
-      <input type="password" name="password" id="password" required>
-    </div>
-    <button type="submit">Entrar</button>
-  </form>
+  </div>
 {% endblock %}

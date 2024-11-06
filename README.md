@@ -1,4 +1,11 @@
 
+# Requisitos
+
+Python 3.12.6
+
+Django 5.1.2
+
+
 # Guia de Configuração
 
 ## Passo 1: Instalar o ambiente virtual

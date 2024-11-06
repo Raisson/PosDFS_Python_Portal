@@ -1,9 +1,53 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Registrar</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrar</button>
-  </form>
+<div class="container ">
+  <div class="row ">
+    <div class="col-md-12">
+      <h1>Registrar</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row ">
+          <div class="col-md-4">
+            <label for="id_first_name">Nome:</label>
+            <input type="text" name="first_name" value="{% if form.first_name.value %}{{ form.first_name.value }}{% else %}{{ '' }}{% endif %}"  class="form-control" maxlength="150" autofocus="" required id="first_name" >
+          </div>
+          <div class="col-md-4">
+            <label for="id_last_name">Sobrenome:</label>
+            <input type="text" name="last_name" value="{% if form.last_name.value %}{{ form.last_name.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required id="last_name">
+          </div>
+          <div class="col-md-4">
+            <label for="id_email">E-mail:</label>
+            <input type="email" name="email" value="{% if form.email.value %}{{ form.email.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus=""  id="email" placeholder="exemplo@mail.com" required>
+          </div>
+          <div class="col-md-4 mt-4">
+            <label for="id_username">Usuário:</label>
+            <input type="text" name="username" value="{% if form.username.value %}{{ form.username.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="id_username">
+          </div>
+          <div class="col-md-4 mt-4">
+            <label for="id_password1">Senha:</label>
+            <input type="password" name="password1" value="{% if form.password1.value %}{{ form.password1.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password1">
+          </div>
+          <div class="col-md-4 mt-4">
+            <label for="id_password2">Repita a Senha:</label>
+            <input type="password" name="password2" value="{% if form.password2.value %}{{ form.password2.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password2">
+          </div>
+          <div class="col-md-3  mt-4"></div>
+            {% if form.errors %}
+              <div class="col-md-12 alert alert-danger  mt-4">
+                {% for field, errors in form.errors.items %}
+                  {% for error in errors %}
+                    <p>{{ error }}</p>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          <div class="col-md-3  mt-4"></div>
+          <div class="col-md-12 text-end">
+            <button  class='btn btn-success mt-4'  type="submit">Registrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

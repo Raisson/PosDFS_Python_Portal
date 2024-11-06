@@ -7,8 +7,8 @@ class UserProfile(models.Model):
     email = models.EmailField()
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
-    phone = models.CharField(max_length=20)
-    phone_number = models.CharField(max_length=20)
+    # phone = models.CharField(max_length=20)
+    # phone_number = models.CharField(max_length=20)
 
 class Projetos(models.Model):
     nome = models.CharField(max_length=200, blank=False, null=False, help_text='Informe o nome')
