@@ -35,9 +35,10 @@ class ProjetoForm(ModelForm):
 class AtividadeForm(ModelForm):
     class Meta:
         model = Atividades
-        fields = ['nome','projeto','descricao']
+        fields = ['nome','projeto','user','descricao']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'projeto': forms.Select(attrs={'class': 'form-control'}),
+            'user': forms.Select(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
         }

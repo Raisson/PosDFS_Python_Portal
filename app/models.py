@@ -21,6 +21,7 @@ class Projetos(models.Model):
 
 class Atividades(models.Model):
     projeto = models.ForeignKey(Projetos, on_delete=models.CASCADE, related_name='atividades')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='usuario')
     nome = models.CharField(max_length=200, blank=False, null=False, help_text='Informe o nome')
     # preco = models.DecimalField(max_digits=10, decimal_places=2)
     descricao = models.TextField()
