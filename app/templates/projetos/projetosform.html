@@ -1,26 +1,50 @@
 {% extends 'base.html' %}
 
-{% block title %} Projeto {% endblock %}
+{% block title %} Projetos {% endblock %}
+
 
 {% block content %}
-    <div class="col-md-12 m-auto pt-2 pb-2 text-center">
-        <h1>Projeto</h1>
-    </div>
- 
-    <div class="col-md-12 m-auto pt-3 pb-2 text-center">
-        <a href="/projetos/" class="btn btn-info">Voltar</a>
-    </div>
-    <div class="col-md-12 m-auto pt-4 pb-2 ">
-        <form name='projetos_criar' id='projetos_criar' method='post' action="{% if db %}/projetosatualizar/{{db.id}}/{%else%}/projetoscriar/{% endif %}">
-            {% csrf_token %}
-            <div class="row">
-                <div class="form-group col-md-10 m-auto"></div>
-                <div class="form-group col-md-10 m-auto">{{projetos_form.nome.label_tag}}{{projetos_form.nome}}</div>
-                <div class="form-group col-md-10 m-auto">{{projetos_form.descricao.label_tag}}{{projetos_form.descricao}}</div>
+<style>
+    #containerProject {
+        margin-top: -11px;
+    }
+</style>
+
+<div class="container" id="containerProject"><br />
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-12">
+            <div class="card rounded-3 text-black">
+                <div class="row g-0">
+                    <div class="col-lg-12">
+                        <div class="card-body p-md-5 mx-md-4">
+
+                            <center>
+                                <h4>Cadastradar Projetos</h4>
+                            </center>
+                            <div class="col-md-12 m-auto pt-4 pb-2 ">
+                                <form name='projetos_criar' id='projetos_criar' method='post'
+                                    action="{% if db %}/projetosatualizar/{{db.id}}/{%else%}/projetoscriar/{% endif %}">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="form-group col-md-10 m-auto"></div>
+                                        <div class="form-group col-md-10 m-auto">
+                                            {{projetos_form.nome.label_tag}}{{projetos_form.nome}}</div>
+                                        <div class="form-group col-md-10 m-auto">
+                                            {{projetos_form.descricao.label_tag}}{{projetos_form.descricao}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-11 text-end">
+                                        <input type='submit' class='btn btn-success mt-4' value="salvar">
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-11 text-end">
-                <input type='submit' class='btn btn-success mt-4' value="salvar">
-            </div>
-        </form>
+        </div>
+
     </div>
-{% endblock %}
+
+    {% endblock %}
