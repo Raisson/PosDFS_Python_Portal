@@ -15,11 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from app.views import home, login_view, user_logout, register_view
 from app.views import projetos, projetos_form, projetos_criar, projetos_editar, projetos_atualizar, projetos_deletar
 from app.views import atividades, atividades_form, atividades_criar, atividades_editar, atividades_atualizar, atividades_deletar
+
+from app.views import ProjetosListCreateView, ProjetosDetailView
+
+
 
 urlpatterns = [
     path('login/', login_view, name='login'),
@@ -35,9 +39,6 @@ urlpatterns = [
     path('projetosatualizar/<int:pk>/', projetos_atualizar, name='projetosatualizar'),
     path('projetosdeletar/<int:pk>/', projetos_deletar, name='projetosdeletar'),
 
-
-
-
     path('atividades/', atividades, name='atividades'),
 
     path('atividadesform/',atividades_form, name='atividadesform'),
@@ -46,4 +47,7 @@ urlpatterns = [
     path('atividadesatualizar/<int:pk>/', atividades_atualizar, name='atividadesatualizar'),
     path('atividadesdeletar/<int:pk>/', atividades_deletar, name='atividadesdeletar'),
 
+    path('api/',include('app.api_urls')),
+    # path('projetos_api/', ProjetosListCreateView.as_view(), name='projetos_api_list_create'),
+    # path('projetos_api/<int:pk>/', ProjetosDetailView.as_view(), name='projetos_api_detalhes'),
 ]

@@ -18,7 +18,6 @@ class Projetos(models.Model):
         return self.nome
 
 
-
 class Atividades(models.Model):
     projeto = models.ForeignKey(Projetos, on_delete=models.CASCADE, related_name='atividades')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='usuario')

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
@@ -7,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Projetos, Atividades
 from .forms import ProjetoForm, AtividadeForm
 from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import ProjetosSerializer, AtividadesSerializer
 
 def register_view(request):
     if request.method == 'POST':
@@ -132,4 +133,20 @@ def atividades_deletar(request, pk):
     data = Atividades.objects.get(pk=pk)
     data.delete()
     return redirect('atividades')
+
+class ProjetosListCreateView(generics.ListCreateAPIView):
+    queryset = Projetos.objects.all()
+    serializer_class = ProjetosSerializer
+
+class ProjetosDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Projetos.objects.all()
+    serializer_class = ProjetosSerializer
+
+class AtividadestCreateView(generics.ListCreateAPIView):
+    queryset = Atividades.objects.all()
+    serializer_class = AtividadesSerializer
+
+class AtividadesDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Atividades.objects.all()
+    serializer_class = AtividadesSerializer
 

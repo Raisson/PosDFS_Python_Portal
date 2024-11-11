@@ -5,6 +5,10 @@ Python 3.12.6
 
 Django 5.1.2
 
+djangorestframework 3.15.2
+
+bootstrap-py 2.0.0
+
 
 # Guia de Configuração
 
@@ -15,7 +19,7 @@ python.exe -m venv venv
 .\venv\Scripts\Activate.ps1
 
 ## Passo 3: Instalar as dependencias
-pip install -r requeriments.txt
+pip install -r requirements.txt
 
 ## Passo 4: Iniciar o servidor web
 python manage.py runserver     
