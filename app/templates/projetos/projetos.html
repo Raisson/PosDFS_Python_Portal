@@ -28,6 +28,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Status</th>
                 <th>Ações</th>                
             </tr>
         </thead>
@@ -36,6 +37,7 @@
             <tr>
                 <td>{{dado.nome}}</td>
                 <td>{{dado.descricao}}</td>
+                <td>{{dado.percentual_concluido}} %</td>
                 <td>
                     <a href="/projetoseditar/{{dado.id}}/" title="Editar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-pencil-square" viewBox="0 0 16 16">

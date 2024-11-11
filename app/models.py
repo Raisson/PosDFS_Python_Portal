@@ -14,6 +14,17 @@ class Projetos(models.Model):
     nome = models.CharField(max_length=200, blank=False, null=False, help_text='Informe o nome')
     # preco = models.DecimalField(max_digits=10, decimal_places=2)
     descricao = models.TextField()
+
+    @property
+    def percentual_concluido(self):
+        atividades = self.atividades.all()  # Relacionamento inverso
+        total_atividades = atividades.count()
+        atividades_concluidas = atividades.filter(status_atividade="FINALIZADO").count()
+
+        if total_atividades == 0:
+            return 0  # Evita divisão por zero
+        return int((atividades_concluidas / total_atividades) * 100)
+    
     def __str__(self):
         return self.nome
 
