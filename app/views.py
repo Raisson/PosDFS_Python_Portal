@@ -7,7 +7,9 @@ from .models import Projetos, Atividades
 from .forms import ProjetoForm, AtividadeForm
 from django.http import HttpResponse
 from rest_framework import generics
-from .serializers import ProjetosSerializer, AtividadesSerializer
+from .serializers import ProjetosSerializer, AtividadesSerializer, ProjetosAtividadesSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 def register_view(request):
     if request.method == 'POST':
@@ -37,14 +39,12 @@ def login_view(request):
         message = ''
     return render(request, 'login.html', {'message': message})
 
-
 @login_required
 def home(request):
     teste =  {}
     teste['sauda'] = 'Bem vindo'
     # teste = 'Bem vindo'
     return render(request, 'index.html',teste)
-
 
 @login_required
 def projetos(request):
@@ -150,3 +150,8 @@ class AtividadesDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Atividades.objects.all()
     serializer_class = AtividadesSerializer
 
+class ProjetosAtividadesView(APIView):
+    def get(self, request):
+        projetos = Projetos.objects.all()  # Busca todos os projetos
+        serializer = ProjetosAtividadesSerializer(projetos, many=True)  # Serializa todos os projetos
+        return Response(serializer.data)  # Retorna os dados serializados
