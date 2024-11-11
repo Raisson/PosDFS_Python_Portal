@@ -1,34 +1,81 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="container ">
-    <div class="row ">
-      <!-- text-end -->
-      <div class="col-md-12 ">
-                  <div class="col-md-4 offset-md-4 mt-4">
-                    <h1>Login</h1>
-                    {% if message %}
+<style>
+  .gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #085b5a, #005f6e, #006289, #0063a8);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #085b5a, #005f6e, #006289, #0063a8);
+    }
+    
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    }
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+    }
+</style>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+               
+                  <h4 class="mt-1 mb-5 pb-1">Login</h4>
+                  {% if message %}
                       <p>{{ message }}</p>
                     {% endif %}
-                  </div>
-                  <form method="post">
-                    {% csrf_token %}
-                    
-                    <div class="col-md-4 offset-md-4 mt-4">
-                      <label for="username">Usuário:</label>
-                      <input type="text" class="form-control" name="username" id="username" required>
-                    </div>
-                    <div class="col-md-4  mt-4"></div>
-                    <div class="col-md-4 offset-md-4 mt-4">
-                      <label for="password" >Senha:</label>
-                      <input type="password" class="form-control" name="password" id="password" required>
-                    </div>
-                    <div class="col-md-4 offset-md-4 mt-4 d-flex justify-content-center">
-                      <a href="{% url 'register' %}" class="btn btn-success  mx-4">Cadastrar</a>
-                      <button class='btn btn-success mx-4'type="submit">Logar</button>
-                    </div>
-                  </form>
+                </div>
 
+                <form method="post">
+                  {% csrf_token %}
+                  <p>Por favor acesse sua conta</p>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text"  class="form-control" name="username" id="username"
+                      placeholder="Login" required/>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Senha" required/>                    
+                  </div>
+                  <div class="d-flex   pb-4">
+                    <button class='btn btn-success mx-4'type="submit">Logar</button>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2">Não tem conta?</p>
+                    <a href="{% url 'register' %}"  type="button" data-mdb-button-init data-mdb-ripple-color="primary" class="btn btn-outline-primary">Registre-se</a>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">PosDFS Python</h4>
+                <p class="small mb-0">Nosso sistema de agendamento facilita a organização de compromissos, permitindo que você marque, gerencie e visualize suas reuniões de maneira eficiente. Com notificações automáticas, integração com calendários e uma interface intuitiva, seu dia a dia se torna mais produtivo. Ideal para empresas e profissionais que valorizam o tempo e a eficiência. Simplifique sua agenda com nosso sistema.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>
 {% endblock %}

@@ -1,38 +1,79 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container ">
-  <div class="row ">
-    <div class="col-md-12">
-      <h1>Registrar</h1>
-      <form method="post">
-        {% csrf_token %}
-        <div class="row ">
-          <div class="col-md-4">
-            <label for="id_first_name">Nome:</label>
+<style>
+  .gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #085b5a, #005f6e, #006289, #0063a8);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #085b5a, #005f6e, #006289, #0063a8);
+    }
+    
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100% !important;
+    }
+    }
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+    }
+</style>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+               
+                  <h4 class="mt-1 mb-5 pb-1">Registrar Usuário</h4>
+                  {% if message %}
+                      <p>{{ message }}</p>
+                    {% endif %}
+                </div>
+
+                <form method="post">
+                  {% csrf_token %}
+                  <p>Por favor informe os dados abaixo:</p>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_first_name">Nome:</label>
             <input type="text" name="first_name" value="{% if form.first_name.value %}{{ form.first_name.value }}{% else %}{{ '' }}{% endif %}"  class="form-control" maxlength="150" autofocus="" required id="first_name" >
-          </div>
-          <div class="col-md-4">
-            <label for="id_last_name">Sobrenome:</label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_last_name">Sobrenome:</label>
             <input type="text" name="last_name" value="{% if form.last_name.value %}{{ form.last_name.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required id="last_name">
-          </div>
-          <div class="col-md-4">
-            <label for="id_email">E-mail:</label>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_email">E-mail:</label>
             <input type="email" name="email" value="{% if form.email.value %}{{ form.email.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus=""  id="email" placeholder="exemplo@mail.com" required>
-          </div>
-          <div class="col-md-4 mt-4">
-            <label for="id_username">Usuário:</label>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_username">Usuário:</label>
             <input type="text" name="username" value="{% if form.username.value %}{{ form.username.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="id_username">
-          </div>
-          <div class="col-md-4 mt-4">
-            <label for="id_password1">Senha:</label>
+                  </div>
+                  
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_password1">Senha:</label>
             <input type="password" name="password1" value="{% if form.password1.value %}{{ form.password1.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password1">
-          </div>
-          <div class="col-md-4 mt-4">
-            <label for="id_password2">Repita a Senha:</label>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_password2">Repita a Senha:</label>
             <input type="password" name="password2" value="{% if form.password2.value %}{{ form.password2.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password2">
-          </div>
-          <div class="col-md-3  mt-4"></div>
-            {% if form.errors %}
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    {% if form.errors %}
               <div class="col-md-12 alert alert-danger  mt-4">
                 {% for field, errors in form.errors.items %}
                   {% for error in errors %}
@@ -41,13 +82,24 @@
                 {% endfor %}
               </div>
             {% endif %}
-          <div class="col-md-3  mt-4"></div>
-          <div class="col-md-12 text-end">
-            <button  class='btn btn-success mt-4'  type="submit">Registrar</button>
+                    
+                  </div>
+                  <button  class='btn btn-success mt-4'  type="submit">Registrar</button>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">Segurança:</h4>
+                <p class="small mb-0">Para garantir a segurança digital, mantenha seus softwares atualizados, pois atualizações frequentes corrigem vulnerabilidades. Utilize senhas fortes e únicas para cada conta e considere um gerenciador de senhas para facilitar. Ative a autenticação de dois fatores (2FA) para uma camada extra de segurança. Nunca compartilhe suas senhas e evite anotá-las em lugares acessíveis. Seja cauteloso ao clicar em links ou abrir anexos de e-mails desconhecidos para evitar phishing. Realize backups regulares dos seus dados para evitar perda em caso de ataque. Mantenha um antivírus atualizado e ativo. Verifique sempre a autenticidade dos sites antes de fornecer informações pessoais. Essas práticas ajudam a proteger sua privacidade e segurança online.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
+</section>
 {% endblock %}
