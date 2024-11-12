@@ -79,6 +79,34 @@
     {% endif %}
 </div>
     <script>
-        new DataTable('#example');
+        // new DataTable('#example');
+        $(document).ready(function() {
+            $('#example').DataTable({
+                language: {
+                    "decimal": ",",
+                    "thousands": ".",
+                    "search": "Buscar:",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "info": "Mostrando de _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "zeroRecords": "Nenhum registro encontrado",
+                    "emptyTable": "Nenhum dado disponível na tabela",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "previous": "Anterior",
+                        "next": "Próximo",
+                        "last": "Último"
+                    },
+                    "aria": {
+                        "sortAscending": ": ativar para ordenar a coluna em ordem crescente",
+                        "sortDescending": ": ativar para ordenar a coluna em ordem decrescente"
+                    }
+                }
+            });
+        });
+
     </script>
 {% endblock %}
