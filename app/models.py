@@ -10,10 +10,22 @@ class UserProfile(models.Model):
     # phone = models.CharField(max_length=20)
     # phone_number = models.CharField(max_length=20)
 
+TIPOS_PRIORIDADES = [
+    ('BAIXA', "BAIXA"),
+    ('MEDIA', "MEDIA"),
+    ('ALTA', "ALTA"),
+]
 class Projetos(models.Model):
     nome = models.CharField(max_length=200, blank=False, null=False, help_text='Informe o nome')
     # preco = models.DecimalField(max_digits=10, decimal_places=2)
+    prioridade = models.CharField(
+        max_length=12,
+        choices=TIPOS_PRIORIDADES,
+        default='BAIXA',
+    )
     descricao = models.TextField()
+    data_inicio = models.DateField()
+    data_fim = models.DateField()
 
     @property
     def percentual_concluido(self):
@@ -33,6 +45,11 @@ class Atividades(models.Model):
     projeto = models.ForeignKey(Projetos, on_delete=models.CASCADE, related_name='atividades')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='usuario')
     nome = models.CharField(max_length=200, blank=False, null=False, help_text='Informe o nome')
+    prioridade = models.CharField(
+        max_length=12,
+        choices=TIPOS_PRIORIDADES,
+        default='BAIXA',
+    )
     STATUS = [
         ('PENDENTE', "PENDENTE"),
         ('EXECUTANDO', "EXECUTANDO"),

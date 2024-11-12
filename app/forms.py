@@ -24,22 +24,31 @@ class CustomUserCreationForm(UserCreationForm):
         return user
     
 class ProjetoForm(ModelForm):
+    data_inicio = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
+    )
+    data_fim = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
+    )
     class Meta:
         model = Projetos
-        fields = ['nome','descricao']
+        fields = ['nome','descricao','prioridade','data_inicio','data_fim']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
+            'prioridade': forms.Select(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
 
 class AtividadeForm(ModelForm):
     status_atividade = forms.ChoiceField(choices=Atividades.STATUS, label='Status', widget=forms.Select(attrs={'class': 'form-control'})) # Para campo select
     class Meta:
         model = Atividades
-        fields = ['nome','projeto','user','status_atividade','descricao']
+        fields = ['nome','projeto','user','status_atividade','prioridade','descricao']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'projeto': forms.Select(attrs={'class': 'form-control'}),
             'user': forms.Select(attrs={'class': 'form-control'}),
+            'prioridade': forms.Select(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
         }

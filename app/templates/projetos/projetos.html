@@ -27,7 +27,10 @@
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Prioridade</th>
                 <th>Descrição</th>
+                <th>Data Inicio</th>
+                <th>Data Fim</th>
                 <th>Status</th>
                 <th>Ações</th>                
             </tr>
@@ -36,7 +39,10 @@
             {% for dado in dados %}
             <tr>
                 <td>{{dado.nome}}</td>
+                <td>{{dado.prioridade}}</td>
                 <td>{{dado.descricao}}</td>
+                <td>{{dado.data_inicio}}</td>
+                <td>{{dado.data_fim}}</td>
                 <td>{{dado.percentual_concluido}} %</td>
                 <td>
                     <a href="/projetoseditar/{{dado.id}}/" title="Editar">
@@ -55,8 +61,12 @@
         <tfoot>
             <tr>
                 <th>Nome</th>
+                <th>Prioridade</th>
                 <th>Descrição</th>
-                <th>Ações</th>  
+                <th>Data Inicio</th>
+                <th>Data Fim</th>
+                <th>Status</th>
+                <th>Ações</th>      
             </tr>
         </tfoot>
     </table>

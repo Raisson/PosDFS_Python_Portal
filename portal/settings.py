@@ -130,3 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login'
 LOGIN_URL = '/login'
+
+
+USE_L10N = False  # Desativa a localização automática de datas e números
+DATE_FORMAT = 'Y-m-d'  # Exibição no formato `YYYY-MM-DD`
+DATE_INPUT_FORMATS = ['%Y-%m-%d']  # Formato aceito para input
+
+
