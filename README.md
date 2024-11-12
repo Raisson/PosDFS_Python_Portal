@@ -3,12 +3,6 @@
 
 Python 3.12.6
 
-Django 5.1.2
-
-djangorestframework 3.15.2
-
-bootstrap-py 2.0.0
-
 
 # Guia de Configuração
 
@@ -22,5 +16,14 @@ python.exe -m venv venv
 pip install -r requirements.txt
 
 ## Passo 4: Iniciar o servidor web
-python manage.py runserver     
+python manage.py runserver    
+
+## Passo : Rotas api
+
+localhost:8000/api/projetos/
+localhost:8000/api/projetos/<ID>
+localhost:8000/api/atividades/
+localhost:8000/api/atividades/<ID>
+localhost:8000/api/projetos-atividades/
+
 
