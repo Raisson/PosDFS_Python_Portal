@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ## Passo 4: Iniciar o servidor web
 python manage.py runserver    
 
-## Passo : Rotas api
+## Rotas api
 
 Requisições GET
 
@@ -27,7 +27,7 @@ localhost:8000/api/projetos/
 localhost:8000/api/projetos/<ID>
 localhost:8000/api/atividades/
 localhost:8000/api/atividades/<ID>
-localhost:8000/api/projetos-atividades/
+localhost:8000/api/projetos-atividades/  # Rota com todos projetos e suas atiidades
 
 
 Requisições POST

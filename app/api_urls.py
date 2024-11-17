@@ -8,8 +8,4 @@ urlpatterns = [
     path('atividades/', AtividadestCreateView.as_view(), name='projetos_api_list_create'),
     path('atividades/<int:pk>/', AtividadesDetailView.as_view(), name='projetos_api_detalhes'), 
     path('projetos-atividades/', ProjetosAtividadesView.as_view(), name='projetos-atividades'),
-
-
-
-    # path('atividades_api/<int:pk>/', AtividadesViewSet.as_view(), name='projetos_api'),
 ]

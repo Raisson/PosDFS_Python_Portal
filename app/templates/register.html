@@ -47,29 +47,33 @@
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label for="id_first_name">Nome:</label>
-            <input type="text" name="first_name" value="{% if form.first_name.value %}{{ form.first_name.value }}{% else %}{{ '' }}{% endif %}"  class="form-control" maxlength="150" autofocus="" required id="first_name" >
+                    <input type="text" name="first_name" value="{% if form.first_name.value %}{{ form.first_name.value }}{% else %}{{ '' }}{% endif %}"  class="form-control" maxlength="150" autofocus="" required id="first_name" >
                   </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label for="id_last_name">Sobrenome:</label>
-            <input type="text" name="last_name" value="{% if form.last_name.value %}{{ form.last_name.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required id="last_name">
+                    <input type="text" name="last_name" value="{% if form.last_name.value %}{{ form.last_name.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required id="last_name">
                   </div>
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label for="id_email">E-mail:</label>
-            <input type="email" name="email" value="{% if form.email.value %}{{ form.email.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus=""  id="email" placeholder="exemplo@mail.com" required>
+                    <input type="email" name="email" value="{% if form.email.value %}{{ form.email.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus=""  id="email" placeholder="exemplo@mail.com" required>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="id_phone_number">Telefone:</label>
+                    <input type="text" name="phone_number" value="{% if form.phone_numbe.value %}{{ form.phone_numbe.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus=""  id="phone_numbe"  >
                   </div>
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label for="id_username">Usuário:</label>
-            <input type="text" name="username" value="{% if form.username.value %}{{ form.username.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="id_username">
+                    <input type="text" name="username" value="{% if form.username.value %}{{ form.username.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="id_username">
                   </div>
                   
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label for="id_password1">Senha:</label>
-            <input type="password" name="password1" value="{% if form.password1.value %}{{ form.password1.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password1">
+                    <input type="password" name="password1" value="{% if form.password1.value %}{{ form.password1.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password1">
                   </div>
                   <div data-mdb-input-init class="form-outline mb-4">
                     <label for="id_password2">Repita a Senha:</label>
-            <input type="password" name="password2" value="{% if form.password2.value %}{{ form.password2.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password2">
+                    <input type="password" name="password2" value="{% if form.password2.value %}{{ form.password2.value }}{% else %}{{ '' }}{% endif %}" class="form-control" maxlength="150" autofocus="" required="" id="password2">
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">

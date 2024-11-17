@@ -22,28 +22,11 @@ def register_view(request):
         form = CustomUserCreationForm()
     return render(request, 'register.html', {'form': form})
 
-def user_logout(request):
-    logout(request)
-    return redirect('login')
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            message = 'Usuário e/ou senha inválido(s).'
-    else:
-        message = ''
-    return render(request, 'login.html', {'message': message})
 
 @login_required
 def home(request):
     teste =  {}
     teste['sauda'] = 'Bem vindo'
-    # teste = 'Bem vindo'
     return render(request, 'index.html',teste)
 
 @login_required
@@ -79,7 +62,6 @@ def projetos_atualizar(request, pk):
     data = {}
     data['db'] = Projetos.objects.get(pk=pk)
     form = ProjetoForm(request.POST or None, instance=data['db'])
-    # print(form.errors)
     if form.is_valid():
         form.save()
         return redirect('projetos')
@@ -124,7 +106,6 @@ def atividades_atualizar(request, pk):
     data = {}
     data['db'] = Atividades.objects.get(pk=pk)
     form = AtividadeForm(request.POST or None, instance=data['db'])
-    # print(form.errors)
     if form.is_valid():
         form.save()
         return redirect('atividades')

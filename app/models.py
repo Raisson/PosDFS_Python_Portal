@@ -7,8 +7,7 @@ class UserProfile(models.Model):
     email = models.EmailField()
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
-    # phone = models.CharField(max_length=20)
-    # phone_number = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20)
 
 TIPOS_PRIORIDADES = [
     ('BAIXA', "BAIXA"),
@@ -17,7 +16,6 @@ TIPOS_PRIORIDADES = [
 ]
 class Projetos(models.Model):
     nome = models.CharField(max_length=200, blank=False, null=False, help_text='Informe o nome')
-    # preco = models.DecimalField(max_digits=10, decimal_places=2)
     prioridade = models.CharField(
         max_length=12,
         choices=TIPOS_PRIORIDADES,
@@ -60,5 +58,6 @@ class Atividades(models.Model):
         choices=STATUS,
         default='PENDENTE',
     )
-    # preco = models.DecimalField(max_digits=10, decimal_places=2)
     descricao = models.TextField()
+    def __str__(self):
+        return self.nome

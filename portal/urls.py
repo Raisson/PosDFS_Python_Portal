@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from app.views import home, login_view, user_logout, register_view
+from django.contrib.auth import views as auth_views
+from app.views import home, register_view
 from app.views import projetos, projetos_form, projetos_criar, projetos_editar, projetos_atualizar, projetos_deletar
 from app.views import atividades, atividades_form, atividades_criar, atividades_editar, atividades_atualizar, atividades_deletar
 
@@ -25,9 +25,10 @@ from app.views import ProjetosListCreateView, ProjetosDetailView
 
 
 
+
 urlpatterns = [
-    path('login/', login_view, name='login'),
-    path('logout/', user_logout, name='logout'),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', register_view, name='register'),
     path('',home, name='home'),
     path('admin/', admin.site.urls),
@@ -48,6 +49,4 @@ urlpatterns = [
     path('atividadesdeletar/<int:pk>/', atividades_deletar, name='atividadesdeletar'),
 
     path('api/',include('app.api_urls')),
-    # path('projetos_api/', ProjetosListCreateView.as_view(), name='projetos_api_list_create'),
-    # path('projetos_api/<int:pk>/', ProjetosDetailView.as_view(), name='projetos_api_detalhes'),
 ]
