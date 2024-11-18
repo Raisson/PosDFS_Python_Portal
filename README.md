@@ -6,17 +6,26 @@ Python 3.12.6
 
 # Guia de Configuração
 
-## Passo 1: Instalar o ambiente virtual
+## Passo 1: Clonar o repositorio
+git clone https://github.com/Raisson/PosDFS_Python_Portal.git
+
+## Passo 2: Entrar no diretorio
+cd PosDFS_Python_Portal
+
+## Passo 3: Instalar o ambiente virtual
 python.exe -m venv venv
 
-## Passo 2: Ativar o ambiente virtual
+## Passo 4: Ativar o ambiente virtual
 .\venv\Scripts\Activate.ps1
 
-## Passo 3: Instalar as dependencias
+## Passo 5: Instalar as dependencias
 pip install -r requirements.txt
 
-## Passo 4: Iniciar o servidor web
+## Passo 6: Iniciar o servidor web
 python manage.py runserver    
+
+
+
 
 ## Rotas api
 
